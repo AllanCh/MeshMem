@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Client.h"
+#include <jsoncpp/json.h>
+#include "ManejadorJson.h"
 /*string token;
 enum xType {String, Entero, Decimal, Caracter};
 
@@ -20,9 +22,15 @@ template <typename T> xReference xMalloc(int size, xType type){
 }*/
 
 
-
 int main() {
-    std::cout<<"Bienvenido"<<std::endl;
-    Client::iniciar("peera");
+    int puerto;
+    char host[256];
+    cout<<"Introduzca el IP del manager: "<<endl;
+    cin>>host;
+    cout<<"Introduzca el puerto en el que escucha el manager"<<endl;
+    cin>>puerto;
+    Client::setHost(host);
+    Client::setPort(puerto);
+    ManejadorJson::crearJson("","Guardar");
     return 0;
 }

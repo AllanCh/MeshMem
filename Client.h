@@ -17,10 +17,16 @@
 using namespace std;
 
 class Client {
-
+private:
+    static int port;
+    static char* host;
     static void error(const char*);
 public:
     static void iniciar(const string);
+    static void setHost(char* dir){host=dir;}
+    static char* getHost(){return host;}
+    static void setPort(int puerto){port=puerto;}
+    static int getPort(){return port;}
 };
 
 
