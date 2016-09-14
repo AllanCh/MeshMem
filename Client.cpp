@@ -2,6 +2,7 @@
 // Created by allan on 10/09/16.
 //
 
+
 #include "Client.h"
 
 void Client::error(const char* msg) {
@@ -9,7 +10,7 @@ void Client::error(const char* msg) {
     exit(0);
 }
 
-void* Client::iniciar(void*  arg) {
+void Client::iniciar(const string texto) {
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;
@@ -23,7 +24,7 @@ void* Client::iniciar(void*  arg) {
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
         error("ERROR opening socket");
-    server = gethostbyname("192.168.1.3");
+    server = gethostbyname("192.168.1.4");
     if (server == NULL) {
         fprintf(stderr,"ERROR, no such host\n");
         exit(0);
@@ -38,15 +39,15 @@ void* Client::iniciar(void*  arg) {
         error("ERROR connecting");
     printf("Por favor escriba su mensaje: ");
     bzero(buffer,256);
-    fgets(buffer,255,stdin);
+    //fgets(buffer,255,stdin)
+    strcpy(buffer,texto.data());
     n = write(sockfd,buffer,strlen(buffer));
-    if (n < 0)
+   /* if (n < 0)
         error("ERROR writing to socket");
     bzero(buffer,256);
     n = read(sockfd,buffer,255);
     if (n < 0)
         error("ERROR reading from socket");
-    printf("%s\n",buffer);
+    printf("%s\n",buffer);*/
     close(sockfd);
-
 }
