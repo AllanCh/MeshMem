@@ -10,10 +10,14 @@
 #include <jsoncpp/json.h>
 using namespace std;
 
-class ManejadorJson {
+template <typename T>class ManejadorJson {
 public:
     static void crearJson(string, string );
     static void leerJson(string);
+    static void xMalloc(string, string ,int);
+    static void xMalloc(string, string, int, string);
+    static void xAssign(string, string, string, string);
+    static void xFree(string, string, string);
 
 };
 

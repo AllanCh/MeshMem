@@ -2,8 +2,11 @@
 #include "Client.h"
 #include <jsoncpp/json.h>
 #include "ManejadorJson.h"
-/*string token;
-enum xType {String, Entero, Decimal, Caracter};
+#include "xReference.h"
+
+string token;
+
+typedef enum tipos {String, Entero, Decimal, Caracter} xType;
 
 void *worker_thread(void *arg)
 {
@@ -16,10 +19,26 @@ char* initialize(char* host, int port){
 }
 template <typename T> xReference xMalloc(int size, xType type){
 
-    xReference<T> hola("UXCCJSHDDE",2);
-    return hola;
+    //aqui se debe obtener el ID de la ubicacion de la memoria en el celular
+    string id="UJFJDJFDJFD";
 
-}*/
+    if(type== String){
+        xReference<string> referencia(id,size);
+        return referencia;
+    }if( type == Entero){
+        xReference<int> referencia(id,size);
+        return referencia;
+    }if( type == Decimal){
+        xReference<float> referencia(id,size);
+        return referencia;
+    }if( type == Caracter){
+        xReference<char> referencia(id,size);
+        return referencia;
+    }else{
+        return NULL;
+    }
+
+}
 
 
 int main() {

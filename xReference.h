@@ -38,7 +38,13 @@ public:
     }
 
 
-
+    bool operator!=(xReference &D){
+        if(storedata.compare(D.storedata)==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
 };
 
