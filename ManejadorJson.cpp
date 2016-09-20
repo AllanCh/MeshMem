@@ -2,6 +2,7 @@
 // Created by allan on 13/09/16.
 //
 
+#include <sstream>
 #include "ManejadorJson.h"
 #include<iostream>
 #include <sstream>
@@ -75,4 +76,6 @@ void ManejadorJson::xFree(string token, string accion, string id){
     }
 
 }
+
+
 

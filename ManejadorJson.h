@@ -10,7 +10,7 @@
 #include <jsoncpp/json.h>
 using namespace std;
 
-template <typename T>class ManejadorJson {
+class ManejadorJson {
 public:
     static void crearJson(string, string );
     static void leerJson(string);

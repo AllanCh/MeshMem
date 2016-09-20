@@ -17,7 +17,7 @@ void *worker_thread(void *arg)
 char* initialize(char* host, int port){
 
 }
-template <typename T> xReference xMalloc(int size, xType type){
+/*xReference xMalloc(int size, xType type){
 
     //aqui se debe obtener el ID de la ubicacion de la memoria en el celular
     string id="UJFJDJFDJFD";
@@ -38,7 +38,7 @@ template <typename T> xReference xMalloc(int size, xType type){
         return NULL;
     }
 
-}
+}*/
 
 
 int main() {

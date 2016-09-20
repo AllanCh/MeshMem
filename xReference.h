@@ -11,16 +11,18 @@
 
 using namespace std;
 
-template <typename T> class xReference {
+template <class T> class xReference {
+
+private:
     string ID;
+    T dato;
     int size;
-    string storedata;
+    typedef enum tipos {String, Entero, Decimal, Caracter} xType;
 
 public:
-    xReference(string id, int tamaño){
-        ID=id;
-        size=tamaño;
-    }
+    xReference();
+
+    void SetValue(string id, T dato, int size ,xType type);
 
     const char* getTypeName(){
         return typeid(T).name();
@@ -30,7 +32,7 @@ public:
     }
 
     bool operator==(xReference &D){
-        if(storedata.compare(D.storedata)==0){
+        if(ID.compare(D.ID)==0){
             return true;
         }else{
             return false;
@@ -39,7 +41,7 @@ public:
 
 
     bool operator!=(xReference &D){
-        if(storedata.compare(D.storedata)==0){
+        if(ID.compare(D.ID)==0){
             return false;
         }else{
             return true;
