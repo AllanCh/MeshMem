@@ -8,13 +8,14 @@
 #include <iostream>
 #include "Client.h"
 #include <jsoncpp/json.h>
+#include "base64.h"
 using namespace std;
 
 class ManejadorJson {
 public:
     static string initialize(string,string);
     static void leerJson(string);
-    static void xMalloc(string,string, string ,int);
+    static void xmalloc(string,string, string ,int);
     static void xMalloc(string,string, string, int, string);
     static void xAssign(string,string, string, string, string);
     static void xFree(string,string, string, string);
