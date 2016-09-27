@@ -11,18 +11,24 @@
 
 using namespace std;
 
-template <class T> class xReference {
+template <typename T> class xReference {
 
 private:
     string ID;
     T dato;
-    int size;
-    typedef enum tipos {String, Entero, Decimal, Caracter} xType;
+    int Size;
 
 public:
-    xReference();
-
-    void SetValue(string id, T dato, int size ,xType type);
+    typedef enum tipos {String, Entero, Decimal, Caracter} xType;
+    xReference(string id, int size){
+        ID=id;
+        Size=size;
+    }
+    xReference(string id, int size, T t){
+        dato=t;
+        ID=id;
+        Size=size;
+    }
 
     const char* getTypeName(){
         return typeid(T).name();

@@ -12,7 +12,7 @@ using namespace std;
 
 class ManejadorJson {
 public:
-    static void crearJson(string, string );
+    static string initialize(string,string);
     static void leerJson(string);
     static void xMalloc(string, string ,int);
     static void xMalloc(string, string, int, string);

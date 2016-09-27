@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Client.h"
-#include <jsoncpp/json.h>
-#include "ManejadorJson.h"
-#include "xReference.h"
+#include "API.h"
 
 string token;
 
@@ -48,8 +46,7 @@ int main() {
     cin>>host;
     cout<<"Introduzca el puerto en el que escucha el manager"<<endl;
     cin>>puerto;
-    Client::setHost(host);
-    Client::setPort(puerto);
-    ManejadorJson::crearJson("","Guardar");
+    API prueba;
+    prueba.initialize(host,puerto);
     return 0;
 }

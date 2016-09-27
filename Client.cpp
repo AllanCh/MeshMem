@@ -13,7 +13,7 @@ void Client::error(const char* msg) {
     exit(0);
 }
 
-void Client::iniciar(string texto) {
+string Client::iniciar(string texto) {
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;
@@ -55,5 +55,8 @@ void Client::iniciar(string texto) {
     if (n < 0)
         error("ERROR reading from socket");
     printf("%s\n",buffer);
+
     close(sockfd);
+
+    return buffer;
 }

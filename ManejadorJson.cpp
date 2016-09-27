@@ -10,14 +10,14 @@
 using namespace std;
 
 
-void ManejadorJson::crearJson(string token, string accion ) {
-    string json = "{\"Token\": \"" + token + "\" , \"Accion\": \"" + accion + "\"}";
+string ManejadorJson::initialize(string Tipo, string accion ) {
+    string json = "{\"Tipo\":\""+Tipo+"\",\"Accion\":\""+accion+"\"}";
     Client::iniciar(json);
     Json::Value root;
     Json::Reader reader;
     bool parsedSuccess = reader.parse(json, root, false);
     if (not parsedSuccess) {
-        cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
+        cout << "Failed to parse JSON in initialize" << endl << reader.getFormatedErrorMessages() << endl;
     }
 }
 
@@ -56,7 +56,7 @@ void ManejadorJson::xMalloc(string token, string accion, int size, string dato){
 void ManejadorJson::xAssign(string token, string accion, string dato, string id){
 
     string json = "{\"Token\": \"" + token + "\" , \"Accion\": \"" + accion + "\" , \"Dato\": \"" + dato + "\" , \"UUID\": \"" + id +"}";
-    Client::iniciar(json);
+    string mensaje = Client::iniciar(json);
     Json::Value root;
     Json::Reader reader;
     bool parsedSuccess = reader.parse(json, root, false);

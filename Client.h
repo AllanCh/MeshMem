@@ -22,7 +22,7 @@ private:
     static char* host;
     static void error(const char*);
 public:
-    static void iniciar(string);
+    static string iniciar(string);
     static void setHost(char* dir){host=dir;}
     static char* getHost(){return host;}
     static void setPort(int puerto){port=puerto;}
