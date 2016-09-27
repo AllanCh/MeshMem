@@ -13,7 +13,7 @@ API::~API() {}
 char* API::initialize(char *host, int port) {
     Client::setHost(host);
     Client::setPort(port);
-    ManejadorJson::initialize(this->Tipo,"Conexion");
+    this->token=ManejadorJson::initialize(this->Tipo,"Conexion");
 }
 
 template<typename T>
