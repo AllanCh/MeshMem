@@ -29,7 +29,7 @@ public:
     char* initialize(char* host, int port);
 
     xReference<API::xType >* xMalloc(int size,xType type);
-    //template<typename T>
+    //template<typename
     //xReference<T>* xMalloc(int size, xType type,void* value);
     template<typename T>
     static void xAssign(xReference<T> &reference, void* value);
