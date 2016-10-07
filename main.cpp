@@ -20,11 +20,10 @@ int main() {
     cout<<"Introduzca el puerto en el que escucha el manager"<<endl;
     cin>>puerto;
     API prueba;
-    //prueba.initialize(host,puerto);
+    prueba.initialize(host,puerto);
 
-    API::xType type =  prueba.Caracter;
-    //xReference<API::xType>* mireference = prueba.xMalloc(32,type);
-    //cout<<"Este es el id de mireference"<<mireference->ID<<endl;
+    xReference<API::xType>* mireference = prueba.xMalloc(32,prueba.Double);
+    cout<<"Este es el id de mireference"<<mireference->ID<<endl;
 
     int i = 10;
     int * iPtr = &i;
@@ -41,8 +40,14 @@ int main() {
     xReference<API::xType>* mireference3 = prueba.xMalloc(64,prueba.Double,dPtr);
     xReference<API::xType>* mireference4 = prueba.xMalloc(64,prueba.Decimal,fPtr);
     xReference<API::xType>* mireference5 = prueba.xMalloc(64,prueba.Caracter,sPtr);
+    xReference<API::xType > *mireference6 = mireference5;
+    cout<<(mireference5->operator!=(*mireference6))<<endl;
 
-    //prueba.xFree(mireference);
+    prueba.xFree(mireference);
+
+    prueba.xAssign(*mireference4, fPtr);
+
+
 
 
     return 0;

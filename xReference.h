@@ -31,6 +31,10 @@ public:
         Size=size;
     }
 
+    T getTipo(){
+        return this->tipo;
+    }
+
     const char* getTypeName(){
         return typeid(T).name();
     }

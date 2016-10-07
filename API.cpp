@@ -61,8 +61,8 @@ xReference<API::xType>* API::xMalloc(int size, xType type, void *value) {
         datocasteado= *(double*)value;
         std::ostringstream strs;
         strs << datocasteado;
-        std::string datoalmacenar = strs.str();
-        cout<<"Dato almacenar double:"<<datoalmacenado<<endl;
+        std::string datoalmacenar(strs.str());
+        cout<<"Dato almacenar double:"<<datoalmacenar<<endl;
         datoalmacenado=datoalmacenar;
     }
     string datocodificado=base64_encode(reinterpret_cast<const unsigned char*>(datoalmacenado.c_str()),datoalmacenado.length());
@@ -75,6 +75,52 @@ xReference<API::xType>* API::xMalloc(int size, xType type, void *value) {
 void API::xFree(xReference<API::xType> *toFree) {
     string UUIDEspacio = toFree->ID;
     ManejadorJson::xFree(this->Tipo, this->token, "xFree", UUIDEspacio);
+}
+
+void API::xAssign(xReference<API::xType> &reference, void *value) {
+    Client::setHost(myhost);
+    Client::setPort(myport);
+    string datoalmacenado;
+
+    if (reference.getTipo() == API::Entero) {
+        int datocasteado;
+        datocasteado = *(int *) value;
+        string datoalmacenar;
+        stringstream convert;
+        convert << datocasteado;
+        datoalmacenar = convert.str();
+        cout << "Dato almacenar int:" << datoalmacenar << endl;
+        datoalmacenado = datoalmacenar;
+    }
+    if (reference.getTipo() == API::Decimal) {
+        float datocasteado;
+        datocasteado = *(float *) value;
+        std::ostringstream ss;
+        ss << datocasteado;
+        std::string datoalmacenar(ss.str());
+        cout << "Dato almacenar float:" << datoalmacenar << endl;
+        datoalmacenado = datoalmacenar;
+    }
+    if (reference.getTipo() == API::Caracter) {
+        char *casteador;
+        casteador = (char *) value;
+        std::string datoalmacenar(casteador);
+        cout << "Dato almacenar char:" << datoalmacenar << endl;
+        datoalmacenado = datoalmacenar;
+    }
+    if (reference.getTipo() == API::Double) {
+        double datocasteado;
+        datocasteado = *(double *) value;
+        std::ostringstream strs;
+        strs << datocasteado;
+        std::string datoalmacenar = strs.str();
+        cout << "Dato almacenar double:" << datoalmacenado << endl;
+        datoalmacenado = datoalmacenar;
+    }
+    string datocodificado=base64_encode(reinterpret_cast<const unsigned char*>(datoalmacenado.c_str()),datoalmacenado.length());
+    ManejadorJson::xAssign(this->Tipo,this->token,"xAssign",datocodificado,reference.ID);
+    cout<<"Id del referrence"<<reference.ID<<endl;
+
 }
 
 
