@@ -32,7 +32,7 @@ string ManejadorJson::xmalloc(string tipo, string token, string accion, int size
     stringstream convert;
     convert << size;
     strInt = convert.str();
-    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Size\":\""+strInt+"}";
+    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Size\":\""+strInt+"\"}";
     cout<<"Antes de hacer Client:: iniciar"<<endl;
     string jsonrecibido = Client::iniciar(json);
     cout<<"JSON recibido:"+jsonrecibido<<endl;
@@ -53,7 +53,7 @@ void ManejadorJson::xMalloc(string tipo,string token, string accion, int size, s
     stringstream convert;
     convert << size;
     strInt = convert.str();
-    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Size\":\""+strInt+"\",\"Dato\":\""+dato+"}";
+    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Size\":\""+strInt+"\",\"Dato\":\""+dato+"\"}";
     string jsonrecibido = Client::iniciar(json);
     Json::Value root;
     Json::Reader reader;
@@ -66,7 +66,7 @@ void ManejadorJson::xMalloc(string tipo,string token, string accion, int size, s
 
 void ManejadorJson::xAssign(string tipo, string token, string accion, string dato, string id){
 
-    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Dato\":\""+dato+"\",\"UUID\":\""+id+"}";
+    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Dato\":\""+dato+"\",\"UUID\":\""+id+"\"}";
     string jsonrecibido = Client::iniciar(json);
     Json::Value root;
     Json::Reader reader;
@@ -77,7 +77,7 @@ void ManejadorJson::xAssign(string tipo, string token, string accion, string dat
 }
 
 void ManejadorJson::xFree(string tipo,string token, string accion, string id){
-    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"UUID\":\""+id+"}";
+    string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"UUID\":\""+id+"\"}";
     string jsonrecibido=Client::iniciar(json);
     Json::Value root;
     Json::Reader reader;

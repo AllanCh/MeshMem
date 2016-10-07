@@ -27,7 +27,7 @@ xReference<API::xType >* API::xMalloc(int size, xType type) {
     string UUIDEspacio=ManejadorJson::xmalloc(this->Tipo,this->token,"xmalloc",size);
     cout<<"Despues de pedirel UUID:"<<UUIDEspacio<<endl;
     xReference<API::xType > *referencia= new xReference<API::xType >(UUIDEspacio,size,type);
-    return referencia; 
+    return referencia;
 }
 
 
