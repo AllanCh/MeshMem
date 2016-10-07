@@ -11,4 +11,4 @@ find_package(Jsoncpp REQUIRED)
 
 
 
-target_link_libraries(Mesh_Mem /usr/lib/libjson_linux-gcc-4.8_libmt.so)
+target_link_libraries(Mesh_Mem /usr/lib/libjson_linux-gcc-5.4.0_libmt.so)
