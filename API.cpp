@@ -20,14 +20,53 @@ char* API::initialize(char *host, int port) {
 
 
 xReference<API::xType >* API::xMalloc(int size, xType type) {
-    //aqui se debe obtener el ID de la ubicacion de la memoria en el celular
-    cout<<"Antes de pedir el UUID"<<endl;
     Client::setHost(myhost);
     Client::setPort(myport);
     string UUIDEspacio=ManejadorJson::xmalloc(this->Tipo,this->token,"xmalloc",size);
-    cout<<"Despues de pedirel UUID:"<<UUIDEspacio<<endl;
+    cout<<"UUIDEspacio:"<<UUIDEspacio<<endl;
     xReference<API::xType > *referencia= new xReference<API::xType >(UUIDEspacio,size,type);
     return referencia;
+}
+
+
+xReference<API::xType>* API::xMalloc(int size, xType type, void *value) {
+    Client::setHost(myhost);
+    Client::setPort(myport);
+    string datoalmacenado;
+    if(type==API::Entero){
+        int datocasteado;
+        datocasteado = * (int* )value;
+        string datoalmacenar;
+        stringstream convert;
+        convert << datocasteado;
+        datoalmacenar = convert.str();
+        cout<<"Dato almacenar int:"<<datoalmacenar<<endl;
+        datoalmacenado=datoalmacenar;
+    }if(type==API::Decimal){
+        float datocasteado;
+        datocasteado = * (float *) value;
+        std::ostringstream ss;
+        ss << datocasteado;
+        std::string datoalmacenar(ss.str());
+        cout<<"Dato almacenar float:"<<datoalmacenar<<endl;
+        datoalmacenado=datoalmacenar;
+    }if(type==API::Caracter){
+        char *casteador;
+        casteador = (char *) value;
+        std::string datoalmacenar(casteador);
+        cout<<"Dato almacenar char:"<<datoalmacenar<<endl;
+        datoalmacenado=datoalmacenar;
+    }if(type==API::Double){
+        double datocasteado;
+        datocasteado= *(double*)value;
+        std::ostringstream strs;
+        strs << datocasteado;
+        std::string datoalmacenar = strs.str();
+        cout<<"Dato almacenar double:"<<datoalmacenado<<endl;
+        datoalmacenado=datoalmacenar;
+    }
+    string datocodificado=base64_encode(reinterpret_cast<const unsigned char*>(datoalmacenado.c_str()),datoalmacenado.length());
+    string UUIDEspacio = ManejadorJson::xMalloc(this->Tipo,this->token,"xMalloc2",size,datocodificado);
 }
 
 void API::xFree(xReference<API::xType> *toFree) {

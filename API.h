@@ -22,18 +22,15 @@ private:
     int myport;
 
 public:
-    enum xType {String, Entero, Decimal, Caracter};
+    enum xType {Double, Entero, Decimal, Caracter};
 
     API();
     virtual ~API();
     char* initialize(char* host, int port);
 
     xReference<API::xType >* xMalloc(int size,xType type);
-    //template<typename
-    //xReference<T>* xMalloc(int size, xType type,void* value);
-    //template<typename T>
-    static void xAssign(xReference<API::xType> &reference, void* value);
-    //template<typename T>
+    xReference<API::xType >* xMalloc(int size, xType type,void* value);
+    void xAssign(xReference<API::xType> &reference, void* value);
     void xFree(xReference<API::xType> *toFree);
 
 };

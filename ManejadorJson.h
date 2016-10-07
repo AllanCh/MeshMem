@@ -16,7 +16,7 @@ public:
     static string initialize(string,string);
     static void leerJson(string);
     static string xmalloc(string,string, string ,int);
-    static void xMalloc(string,string, string, int, string);
+    static string xMalloc(string,string, string, int, string);
     static void xAssign(string,string, string, string, string);
     static void xFree(string,string, string, string);
 
