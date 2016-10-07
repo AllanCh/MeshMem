@@ -31,10 +31,10 @@ public:
     xReference<API::xType >* xMalloc(int size,xType type);
     //template<typename
     //xReference<T>* xMalloc(int size, xType type,void* value);
-    template<typename T>
-    static void xAssign(xReference<T> &reference, void* value);
-    template<typename T>
-    void xFree(xReference<T> &toFree);
+    //template<typename T>
+    static void xAssign(xReference<API::xType> &reference, void* value);
+    //template<typename T>
+    void xFree(xReference<API::xType> *toFree);
 
 };
 

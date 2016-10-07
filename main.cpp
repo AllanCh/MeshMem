@@ -26,5 +26,7 @@ int main() {
     xReference<API::xType>* mireference = prueba.xMalloc(32,type);
     cout<<"Este es el id de mireference"<<mireference->ID<<endl;
 
+    xReference<API::xType>* mireference2 = prueba.xMalloc(64,type);
+
     return 0;
 }

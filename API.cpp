@@ -30,4 +30,9 @@ xReference<API::xType >* API::xMalloc(int size, xType type) {
     return referencia;
 }
 
+void API::xFree(xReference<API::xType> *toFree) {
+    string UUIDEspacio = toFree->ID;
+    ManejadorJson::xFree(this->Tipo, this->token, "xFree", UUIDEspacio);
+}
+
 
