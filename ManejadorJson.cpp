@@ -43,7 +43,6 @@ string ManejadorJson::xmalloc(string tipo, string token, string accion, int size
         cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
     }
     string UUIDEspacio = root["UUIDEspacio"].asString();
-    cout<<"UUIDEspacio"<<UUIDEspacio<<endl;
     return UUIDEspacio;
 
 }
@@ -62,7 +61,6 @@ string ManejadorJson::xMalloc(string tipo,string token, string accion, int size,
         cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
     }
     string UUIDEspacio = root["UUIDEspacio"].asString();
-    cout<<"UUIDEspacio"<<UUIDEspacio<<endl;
     return UUIDEspacio;
 }
 

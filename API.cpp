@@ -67,6 +67,9 @@ xReference<API::xType>* API::xMalloc(int size, xType type, void *value) {
     }
     string datocodificado=base64_encode(reinterpret_cast<const unsigned char*>(datoalmacenado.c_str()),datoalmacenado.length());
     string UUIDEspacio = ManejadorJson::xMalloc(this->Tipo,this->token,"xMalloc2",size,datocodificado);
+    cout<<"UUIDEspacio:"<<UUIDEspacio<<endl;
+    xReference<API::xType > *referencia= new xReference<API::xType >(UUIDEspacio,size,type);
+    return referencia;
 }
 
 void API::xFree(xReference<API::xType> *toFree) {
