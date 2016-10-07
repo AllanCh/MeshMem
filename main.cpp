@@ -1,10 +1,9 @@
 #include <iostream>
-#include "Client.h"
 #include "API.h"
 
 string token;
 
-typedef enum tipos {String, Entero, Decimal, Caracter} xType;
+
 
 void *worker_thread(void *arg)
 {
@@ -48,5 +47,9 @@ int main() {
     cin>>puerto;
     API prueba;
     prueba.initialize(host,puerto);
+
+    API::xType type =  prueba.String;
+    xReference<API::xType>* mireference = prueba.xMalloc(32,type);
+    cout<<"Este es el id de mireference"<<mireference->ID<<endl;
     return 0;
 }

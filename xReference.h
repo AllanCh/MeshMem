@@ -14,18 +14,19 @@ using namespace std;
 template <typename T> class xReference {
 
 private:
-    string ID;
-    T dato;
+    T tipo;
     int Size;
+    string datoalmacenado;
 
 public:
-    typedef enum tipos {String, Entero, Decimal, Caracter} xType;
-    xReference(string id, int size){
+    string ID;
+    xReference(string id, int size,T type){
         ID=id;
         Size=size;
+        tipo=type;
     }
-    xReference(string id, int size, T t){
-        dato=t;
+    xReference(string id, int size, T type,string dato){
+        datoalmacenado=dato;
         ID=id;
         Size=size;
     }

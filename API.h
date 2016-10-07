@@ -18,16 +18,19 @@ class API {
 private:
     string token;
     string Tipo = "meshMemCLient";
+    char* myhost;
+    int myport;
+
 public:
-    typedef enum tipos {String, Entero, Decimal, Caracter} xType;
+    enum xType {String, Entero, Decimal, Caracter};
+
     API();
     virtual ~API();
     char* initialize(char* host, int port);
 
-    template<typename T>
-    xReference<T>* xMalloc(int size, xType type);
-    template<typename T>
-    xReference<T>* xMalloc(int size, xType type,void* value);
+    xReference<API::xType >* xMalloc(int size,xType type);
+    //template<typename T>
+    //xReference<T>* xMalloc(int size, xType type,void* value);
     template<typename T>
     static void xAssign(xReference<T> &reference, void* value);
     template<typename T>

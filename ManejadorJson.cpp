@@ -13,7 +13,7 @@ using namespace std;
 string ManejadorJson::initialize(string tipo, string accion ) {
     string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\"}";
     string jsonrecibido = Client::iniciar(json);
-    cout<<"JSON recibido:"+jsonrecibido<<endl;
+    cout<<"JSON recibido:"+jsonrecibido<<"Hola"<<endl;
     Json::Value root;
     Json::Reader reader;
     bool parsedSuccess = reader.parse(jsonrecibido, root, false);
@@ -27,19 +27,24 @@ string ManejadorJson::initialize(string tipo, string accion ) {
     return token;
 }
 
-void ManejadorJson::xmalloc(string tipo, string token, string accion, int size){
+string ManejadorJson::xmalloc(string tipo, string token, string accion, int size){
     string strInt;
     stringstream convert;
     convert << size;
     strInt = convert.str();
     string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Size\":\""+strInt+"}";
+    cout<<"Antes de hacer Client:: iniciar"<<endl;
     string jsonrecibido = Client::iniciar(json);
+    cout<<"JSON recibido:"+jsonrecibido<<endl;
     Json::Value root;
     Json::Reader reader;
     bool parsedSuccess = reader.parse(jsonrecibido, root, false);
     if (not parsedSuccess) {
         cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
     }
+    string UUIDEspacio = root["UUIDEspacio"].asString();
+    cout<<"UUIDEspacio"<<UUIDEspacio<<endl;
+    return UUIDEspacio;
 
 }
 

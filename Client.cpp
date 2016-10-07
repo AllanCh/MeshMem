@@ -46,17 +46,19 @@ string Client::iniciar(string texto) {
     fgets(buffer,255,stdin);
     strcpy(buffer,texto.c_str());
     buffer[texto.length()]='\n';
-    //cout<<"Aqui";
+    cout<<"Buffer"<<buffer<<"Hola"<<endl;
     n=send(sockfd,buffer,texto.length()+1,0);
     if (n < 0)
         error("ERROR writing to socket");
     bzero(buffer,256);
-    n=read(sockfd,buffer,255);
+    n=recv(sockfd,buffer,sizeof(buffer)-1,0);
     if (n < 0)
         error("ERROR reading from socket");
     printf("%s\n",buffer);
 
     close(sockfd);
+    shutdown(sockfd, SHUT_RDWR);
+    cout<<"Buffer"<<buffer<<"Hola de nuevo"<<endl;
 
     return buffer;
 }
