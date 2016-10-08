@@ -40,7 +40,7 @@ string ManejadorJson::xmalloc(string tipo, string token, string accion, int size
     Json::Reader reader;
     bool parsedSuccess = reader.parse(jsonrecibido, root, false);
     if (not parsedSuccess) {
-        cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
+        cout << "Failed to parse JSON1" << endl << reader.getFormatedErrorMessages() << endl;
     }
     string UUIDEspacio = root["UUIDEspacio"].asString();
     return UUIDEspacio;
@@ -58,7 +58,7 @@ string ManejadorJson::xMalloc(string tipo,string token, string accion, int size,
     Json::Reader reader;
     bool parsedSuccess = reader.parse(jsonrecibido, root, false);
     if (not parsedSuccess) {
-        cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
+        cout << "Failed to parse JSON2" << endl << reader.getFormatedErrorMessages() << endl;
     }
     string UUIDEspacio = root["UUIDEspacio"].asString();
     return UUIDEspacio;
@@ -69,23 +69,12 @@ void ManejadorJson::xAssign(string tipo, string token, string accion, string dat
 
     string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"Dato\":\""+dato+"\",\"UUID\":\""+id+"\"}";
     string jsonrecibido = Client::iniciar(json);
-    Json::Value root;
-    Json::Reader reader;
-    bool parsedSuccess = reader.parse(jsonrecibido, root, false);
-    if (not parsedSuccess) {
-        cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
-    }
+
 }
 
 void ManejadorJson::xFree(string tipo,string token, string accion, string id){
     string json = "{\"Tipo\":\""+tipo+"\",\"Accion\":\""+accion+"\",\"Token\":\""+token+"\",\"UUID\":\""+id+"\"}";
     string jsonrecibido=Client::iniciar(json);
-    Json::Value root;
-    Json::Reader reader;
-    bool parsedSuccess = reader.parse(jsonrecibido, root, false);
-    if (not parsedSuccess) {
-        cout << "Failed to parse JSON" << endl << reader.getFormatedErrorMessages() << endl;
-    }
 
 }
 

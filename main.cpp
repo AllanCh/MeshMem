@@ -3,8 +3,6 @@
 
 string token;
 
-
-
 void *worker_thread(void *arg)
 {
     printf("This is worker_thread()\n");
